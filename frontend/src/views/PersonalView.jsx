@@ -42,12 +42,12 @@ export default function PersonalView() {
   });
 
   const loadData = () => {
-    fetch('http://localhost:5000/api/personal/trabajadores')
+    fetch('https://ssoma-app-fbwe.onrender.com/api/personal/trabajadores')
       .then((res) => res.json())
       .then((d) => d.success && setWorkers(d.data))
       .catch((err) => console.error('Error cargando trabajadores:', err));
 
-    fetch('http://localhost:5000/api/personal/areas')
+    fetch('https://ssoma-app-fbwe.onrender.com/api/personal/areas')
       .then((res) => res.json())
       .then((d) => {
         if (d.success) setAreas(d.data);
@@ -67,7 +67,7 @@ export default function PersonalView() {
     setFormError('');
 
     try {
-      const res = await fetch('http://localhost:5000/api/personal/trabajadores', {
+      const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/personal/trabajadores', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(workerForm)
@@ -104,7 +104,7 @@ export default function PersonalView() {
     setFormError('');
 
     try {
-      const res = await fetch('http://localhost:5000/api/personal/areas', {
+      const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/personal/areas', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(areaForm)
@@ -130,7 +130,7 @@ export default function PersonalView() {
     if (!window.confirm(`¿Seguro que deseas eliminar al colaborador ${nombre}?`)) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/personal/trabajadores/${id}`, {
+      const res = await fetch(`https://ssoma-app-fbwe.onrender.com/api/personal/trabajadores/${id}`, {
         method: 'DELETE'
       });
       const data = await res.json();
@@ -149,7 +149,7 @@ export default function PersonalView() {
     if (!window.confirm(`¿Seguro que deseas eliminar el área "${nombre}"?`)) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/personal/areas/${id}`, {
+      const res = await fetch(`https://ssoma-app-fbwe.onrender.com/api/personal/areas/${id}`, {
         method: 'DELETE'
       });
       const data = await res.json();
@@ -798,12 +798,12 @@ export default function PersonalView() {
 //   });
 
 //   const loadData = () => {
-//     fetch('http://localhost:5000/api/personal/trabajadores')
+//     fetch('https://ssoma-app-fbwe.onrender.com/api/personal/trabajadores')
 //       .then((res) => res.json())
 //       .then((d) => d.success && setWorkers(d.data))
 //       .catch((err) => console.error('Error cargando trabajadores:', err));
 
-//     fetch('http://localhost:5000/api/personal/areas')
+//     fetch('https://ssoma-app-fbwe.onrender.com/api/personal/areas')
 //       .then((res) => res.json())
 //       .then((d) => {
 //         if (d.success) setAreas(d.data);
@@ -822,7 +822,7 @@ export default function PersonalView() {
 //     setFormError('');
 
 //     try {
-//       const res = await fetch('http://localhost:5000/api/personal/trabajadores', {
+//       const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/personal/trabajadores', {
 //         method: 'POST',
 //         headers: { 'Content-Type': 'application/json' },
 //         body: JSON.stringify(formData)
@@ -856,7 +856,7 @@ export default function PersonalView() {
 //     if (!window.confirm(`¿Seguro que deseas eliminar a ${nombre}?`)) return;
 
 //     try {
-//       const res = await fetch(`http://localhost:5000/api/personal/trabajadores/${id}`, {
+//       const res = await fetch(`https://ssoma-app-fbwe.onrender.com/api/personal/trabajadores/${id}`, {
 //         method: 'DELETE'
 //       });
 //       const data = await res.json();
@@ -1295,11 +1295,11 @@ export default function PersonalView() {
 //   const [searchTerm, setSearchTerm] = useState('');
 
 //   useEffect(() => {
-//     fetch('http://localhost:5000/api/personal/trabajadores')
+//     fetch('https://ssoma-app-fbwe.onrender.com/api/personal/trabajadores')
 //       .then((res) => res.json())
 //       .then((d) => d.success && setWorkers(d.data));
 
-//     fetch('http://localhost:5000/api/personal/areas')
+//     fetch('https://ssoma-app-fbwe.onrender.com/api/personal/areas')
 //       .then((res) => res.json())
 //       .then((d) => {
 //         if (d.success) setAreas(d.data);

@@ -17,7 +17,7 @@ export default function IncidentesView() {
 
   const loadData = () => {
     setLoading(true);
-    let url = 'http://localhost:5000/api/incidentes?';
+    let url = 'https://ssoma-app-fbwe.onrender.com/api/incidentes?';
     if (filtroSeveridad) url += `severidad=${filtroSeveridad}&`;
     if (filtroEstado) url += `estado=${filtroEstado}&`;
     if (searchTerm) url += `search=${encodeURIComponent(searchTerm)}&`;
@@ -30,11 +30,11 @@ export default function IncidentesView() {
       })
       .catch(() => setLoading(false));
 
-    fetch('http://localhost:5000/api/personal/areas')
+    fetch('https://ssoma-app-fbwe.onrender.com/api/personal/areas')
       .then((res) => res.json())
       .then((d) => d.success && setAreas(d.data));
 
-    fetch('http://localhost:5000/api/personal/trabajadores')
+    fetch('https://ssoma-app-fbwe.onrender.com/api/personal/trabajadores')
       .then((res) => res.json())
       .then((d) => d.success && setWorkers(d.data));
   };
@@ -44,7 +44,7 @@ export default function IncidentesView() {
   }, [filtroSeveridad, filtroEstado, searchTerm]);
 
   const handleSave = async (formData) => {
-    const res = await fetch('http://localhost:5000/api/incidentes', {
+    const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/incidentes', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
@@ -54,7 +54,7 @@ export default function IncidentesView() {
   };
 
   const handleCambiarEstado = async (id, nuevoEstado) => {
-    await fetch(`http://localhost:5000/api/incidentes/${id}/estado`, {
+    await fetch(`https://ssoma-app-fbwe.onrender.com/api/incidentes/${id}/estado`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ estado: nuevoEstado })

@@ -23,7 +23,7 @@ export default function CapacitacionesView() {
 
   const loadData = () => {
     setLoading(true);
-    fetch('http://localhost:5000/api/capacitaciones')
+    fetch('https://ssoma-app-fbwe.onrender.com/api/capacitaciones')
       .then((res) => res.json())
       .then((d) => {
         if (d.success) {
@@ -34,7 +34,7 @@ export default function CapacitacionesView() {
       })
       .catch(() => setLoading(false));
 
-    fetch('http://localhost:5000/api/personal/areas').then((res) => res.json()).then((d) => d.success && setAreas(d.data));
+    fetch('https://ssoma-app-fbwe.onrender.com/api/personal/areas').then((res) => res.json()).then((d) => d.success && setAreas(d.data));
   };
 
   useEffect(() => {
@@ -43,7 +43,7 @@ export default function CapacitacionesView() {
 
   const handleCreate = async (e) => {
     e.preventDefault();
-    await fetch('http://localhost:5000/api/capacitaciones', {
+    await fetch('https://ssoma-app-fbwe.onrender.com/api/capacitaciones', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)

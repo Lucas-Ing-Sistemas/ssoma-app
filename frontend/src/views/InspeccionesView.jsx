@@ -23,7 +23,7 @@ export default function InspeccionesView() {
 
   const loadData = () => {
     setLoading(true);
-    fetch('http://localhost:5000/api/inspecciones')
+    fetch('https://ssoma-app-fbwe.onrender.com/api/inspecciones')
       .then((res) => res.json())
       .then((data) => {
         if (data.success) setInspecciones(data.data);
@@ -31,11 +31,11 @@ export default function InspeccionesView() {
       })
       .catch(() => setLoading(false));
 
-    fetch('http://localhost:5000/api/personal/areas')
+    fetch('https://ssoma-app-fbwe.onrender.com/api/personal/areas')
       .then((res) => res.json())
       .then((d) => d.success && setAreas(d.data));
 
-    fetch('http://localhost:5000/api/personal/trabajadores')
+    fetch('https://ssoma-app-fbwe.onrender.com/api/personal/trabajadores')
       .then((res) => res.json())
       .then((d) => d.success && setWorkers(d.data));
   };
@@ -46,7 +46,7 @@ export default function InspeccionesView() {
 
   const handleCreate = async (e) => {
     e.preventDefault();
-    await fetch('http://localhost:5000/api/inspecciones', {
+    await fetch('https://ssoma-app-fbwe.onrender.com/api/inspecciones', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
@@ -57,7 +57,7 @@ export default function InspeccionesView() {
 
   const handleViewHallazgos = async (insp) => {
     setSelectedInspection(insp);
-    const res = await fetch(`http://localhost:5000/api/inspecciones/${insp.id}/hallazgos`);
+    const res = await fetch(`https://ssoma-app-fbwe.onrender.com/api/inspecciones/${insp.id}/hallazgos`);
     const d = await res.json();
     if (d.success) setHallazgos(d.data);
   };

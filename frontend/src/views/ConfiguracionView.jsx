@@ -101,12 +101,12 @@ export default function ConfiguracionView() {
   const fetchUsers = async () => {
     setLoadingUsers(true);
     try {
-      const res = await fetch('http://localhost:5000/api/auth/users');
+      const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/auth/users');
       const data = await res.json();
       if (data.success && Array.isArray(data.data) && data.data.length > 0) {
         setUsersList(data.data);
       } else {
-        const resFallback = await fetch('http://localhost:5000/api/auth/demo-users');
+        const resFallback = await fetch('https://ssoma-app-fbwe.onrender.com/api/auth/demo-users');
         const dataFallback = await resFallback.json();
         if (dataFallback.success) {
           setUsersList(dataFallback.users || []);
@@ -131,8 +131,8 @@ export default function ConfiguracionView() {
     setUserFormError('');
 
     const url = editingUserId
-      ? `http://localhost:5000/api/auth/users/${editingUserId}`
-      : 'http://localhost:5000/api/auth/users';
+      ? `https://ssoma-app-fbwe.onrender.com/api/auth/users/${editingUserId}`
+      : 'https://ssoma-app-fbwe.onrender.com/api/auth/users';
     const method = editingUserId ? 'PUT' : 'POST';
 
     try {
@@ -180,7 +180,7 @@ export default function ConfiguracionView() {
     if (!window.confirm(`¿Seguro que deseas eliminar al usuario ${nombre}?`)) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/auth/users/${id}`, {
+      const res = await fetch(`https://ssoma-app-fbwe.onrender.com/api/auth/users/${id}`, {
         method: 'DELETE'
       });
       const data = await res.json();
@@ -232,7 +232,7 @@ export default function ConfiguracionView() {
   const handleExportBackup = async () => {
     setIsExporting(true);
     try {
-      const res = await fetch('http://localhost:5000/api/configuracion/backup/export');
+      const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/configuracion/backup/export');
       if (!res.ok) throw new Error('Fallo al generar archivo de respaldo.');
 
       const blob = await res.blob();
@@ -285,7 +285,7 @@ export default function ConfiguracionView() {
     if (!restoreFile) return;
     setIsRestoring(true);
     try {
-      const res = await fetch('http://localhost:5000/api/configuracion/backup/restore', {
+      const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/configuracion/backup/restore', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ backup: restoreFile })
@@ -315,7 +315,7 @@ export default function ConfiguracionView() {
 
     setIsResetting(true);
     try {
-      const res = await fetch('http://localhost:5000/api/configuracion/sistema/reset', {
+      const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/configuracion/sistema/reset', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -1621,7 +1621,7 @@ export default function ConfiguracionView() {
 //   const fetchUsers = async () => {
 //     setLoadingUsers(true);
 //     try {
-//       const res = await fetch('http://localhost:5000/api/auth/users');
+//       const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/auth/users');
 //       const data = await res.json();
 //       if (data.success) {
 //         setUsersList(data.data);
@@ -1645,8 +1645,8 @@ export default function ConfiguracionView() {
 //     setUserFormError('');
 
 //     const url = editingUserId
-//       ? `http://localhost:5000/api/auth/users/${editingUserId}`
-//       : 'http://localhost:5000/api/auth/users';
+//       ? `https://ssoma-app-fbwe.onrender.com/api/auth/users/${editingUserId}`
+//       : 'https://ssoma-app-fbwe.onrender.com/api/auth/users';
 //     const method = editingUserId ? 'PUT' : 'POST';
 
 //     try {
@@ -1696,7 +1696,7 @@ export default function ConfiguracionView() {
 //     if (!window.confirm(`¿Seguro que deseas eliminar al usuario ${nombre}?`)) return;
 
 //     try {
-//       const res = await fetch(`http://localhost:5000/api/auth/users/${id}`, {
+//       const res = await fetch(`https://ssoma-app-fbwe.onrender.com/api/auth/users/${id}`, {
 //         method: 'DELETE'
 //       });
 //       const data = await res.json();
@@ -1751,7 +1751,7 @@ export default function ConfiguracionView() {
 //   const handleExportBackup = async () => {
 //     setIsExporting(true);
 //     try {
-//       const res = await fetch('http://localhost:5000/api/configuracion/backup/export');
+//       const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/configuracion/backup/export');
 //       if (!res.ok) throw new Error('Fallo al generar archivo de respaldo.');
 
 //       const blob = await res.blob();
@@ -1806,7 +1806,7 @@ export default function ConfiguracionView() {
 //     if (!restoreFile) return;
 //     setIsRestoring(true);
 //     try {
-//       const res = await fetch('http://localhost:5000/api/configuracion/backup/restore', {
+//       const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/configuracion/backup/restore', {
 //         method: 'POST',
 //         headers: { 'Content-Type': 'application/json' },
 //         body: JSON.stringify({ backup: restoreFile })
@@ -1837,7 +1837,7 @@ export default function ConfiguracionView() {
 
 //     setIsResetting(true);
 //     try {
-//       const res = await fetch('http://localhost:5000/api/configuracion/sistema/reset', {
+//       const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/configuracion/sistema/reset', {
 //         method: 'POST',
 //         headers: { 'Content-Type': 'application/json' },
 //         body: JSON.stringify({
@@ -3351,7 +3351,7 @@ export default function ConfiguracionView() {
 //   const handleExportBackup = async () => {
 //     setIsExporting(true);
 //     try {
-//       const res = await fetch('http://localhost:5000/api/configuracion/backup/export');
+//       const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/configuracion/backup/export');
 //       if (!res.ok) throw new Error('Fallo al generar archivo de respaldo.');
 
 //       const blob = await res.blob();
@@ -3406,7 +3406,7 @@ export default function ConfiguracionView() {
 //     if (!restoreFile) return;
 //     setIsRestoring(true);
 //     try {
-//       const res = await fetch('http://localhost:5000/api/configuracion/backup/restore', {
+//       const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/configuracion/backup/restore', {
 //         method: 'POST',
 //         headers: { 'Content-Type': 'application/json' },
 //         body: JSON.stringify({ backup: restoreFile })
@@ -3437,7 +3437,7 @@ export default function ConfiguracionView() {
 
 //     setIsResetting(true);
 //     try {
-//       const res = await fetch('http://localhost:5000/api/configuracion/sistema/reset', {
+//       const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/configuracion/sistema/reset', {
 //         method: 'POST',
 //         headers: { 'Content-Type': 'application/json' },
 //         body: JSON.stringify({

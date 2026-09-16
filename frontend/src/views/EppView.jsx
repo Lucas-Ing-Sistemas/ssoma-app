@@ -54,12 +54,12 @@ export default function EppView() {
 
   const loadData = () => {
     setLoading(true);
-    fetch('http://localhost:5000/api/epp/inventario')
+    fetch('https://ssoma-app-fbwe.onrender.com/api/epp/inventario')
       .then((res) => res.json())
       .then((d) => d.success && setInventario(d.data))
       .catch((err) => console.error('Error cargando inventario EPP:', err));
 
-    fetch('http://localhost:5000/api/epp/entregas')
+    fetch('https://ssoma-app-fbwe.onrender.com/api/epp/entregas')
       .then((res) => res.json())
       .then((d) => {
         if (d.success) setEntregas(d.data);
@@ -67,7 +67,7 @@ export default function EppView() {
       })
       .catch(() => setLoading(false));
 
-    fetch('http://localhost:5000/api/personal/trabajadores')
+    fetch('https://ssoma-app-fbwe.onrender.com/api/personal/trabajadores')
       .then((res) => res.json())
       .then((d) => d.success && setWorkers(d.data))
       .catch(() => { });
@@ -84,7 +84,7 @@ export default function EppView() {
     setFormError('');
 
     try {
-      const res = await fetch('http://localhost:5000/api/epp/entregas', {
+      const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/epp/entregas', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formEntrega)
@@ -118,7 +118,7 @@ export default function EppView() {
     setFormError('');
 
     try {
-      const res = await fetch('http://localhost:5000/api/epp/inventario', {
+      const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/epp/inventario', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formNuevoEpp)
@@ -156,7 +156,7 @@ export default function EppView() {
     const nuevoStock = Number(selectedEpp.stock_actual) + Number(formStock.stock_adicional);
 
     try {
-      const res = await fetch(`http://localhost:5000/api/epp/inventario/${selectedEpp.id}/stock`, {
+      const res = await fetch(`https://ssoma-app-fbwe.onrender.com/api/epp/inventario/${selectedEpp.id}/stock`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -185,7 +185,7 @@ export default function EppView() {
     if (!window.confirm(`¿Deseas eliminar el equipo "${nombre}" del catálogo?`)) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/epp/inventario/${id}`, {
+      const res = await fetch(`https://ssoma-app-fbwe.onrender.com/api/epp/inventario/${id}`, {
         method: 'DELETE'
       });
       const data = await res.json();
@@ -972,11 +972,11 @@ export default function EppView() {
 
 //   const loadData = () => {
 //     setLoading(true);
-//     fetch('http://localhost:5000/api/epp/inventario')
+//     fetch('https://ssoma-app-fbwe.onrender.com/api/epp/inventario')
 //       .then((res) => res.json())
 //       .then((d) => d.success && setInventario(d.data));
 
-//     fetch('http://localhost:5000/api/epp/entregas')
+//     fetch('https://ssoma-app-fbwe.onrender.com/api/epp/entregas')
 //       .then((res) => res.json())
 //       .then((d) => {
 //         if (d.success) setEntregas(d.data);
@@ -984,7 +984,7 @@ export default function EppView() {
 //       })
 //       .catch(() => setLoading(false));
 
-//     fetch('http://localhost:5000/api/personal/trabajadores').then((res) => res.json()).then((d) => d.success && setWorkers(d.data));
+//     fetch('https://ssoma-app-fbwe.onrender.com/api/personal/trabajadores').then((res) => res.json()).then((d) => d.success && setWorkers(d.data));
 //   };
 
 //   useEffect(() => {
@@ -993,7 +993,7 @@ export default function EppView() {
 
 //   const handleSaveEntrega = async (e) => {
 //     e.preventDefault();
-//     await fetch('http://localhost:5000/api/epp/entregas', {
+//     await fetch('https://ssoma-app-fbwe.onrender.com/api/epp/entregas', {
 //       method: 'POST',
 //       headers: { 'Content-Type': 'application/json' },
 //       body: JSON.stringify(formEntrega)

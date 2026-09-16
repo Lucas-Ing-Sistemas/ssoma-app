@@ -23,7 +23,7 @@ export default function LoginView() {
     setError('');
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/login', {
+      const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -36,7 +36,7 @@ export default function LoginView() {
         setError(data.message || 'Error al iniciar sesión.');
       }
     } catch (err) {
-      setError('No se pudo conectar con el servidor backend en http://localhost:5000');
+      setError('No se pudo conectar con el servidor backend en https://ssoma-app-fbwe.onrender.com');
     } finally {
       setLoading(false);
     }
@@ -220,7 +220,7 @@ export default function LoginView() {
 //     setError('');
 
 //     try {
-//       const res = await fetch('http://localhost:5000/api/auth/login', {
+//       const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/auth/login', {
 //         method: 'POST',
 //         headers: { 'Content-Type': 'application/json' },
 //         body: JSON.stringify({ email, password })
@@ -233,7 +233,7 @@ export default function LoginView() {
 //         setError(data.message || 'Error al iniciar sesión.');
 //       }
 //     } catch (err) {
-//       setError('No se pudo conectar con el servidor backend en http://localhost:5000');
+//       setError('No se pudo conectar con el servidor backend en https://ssoma-app-fbwe.onrender.com');
 //     } finally {
 //       setLoading(false);
 //     }
@@ -604,7 +604,7 @@ export default function LoginView() {
 //     setError('');
 
 //     try {
-//       const res = await fetch('http://localhost:5000/api/auth/login', {
+//       const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/auth/login', {
 //         method: 'POST',
 //         headers: { 'Content-Type': 'application/json' },
 //         body: JSON.stringify({ email, password })
@@ -617,7 +617,7 @@ export default function LoginView() {
 //         setError(data.message || 'Error al iniciar sesión.');
 //       }
 //     } catch (err) {
-//       setError('No se pudo conectar con el servidor backend en http://localhost:5000');
+//       setError('No se pudo conectar con el servidor backend en https://ssoma-app-fbwe.onrender.com');
 //     } finally {
 //       setLoading(false);
 //     }

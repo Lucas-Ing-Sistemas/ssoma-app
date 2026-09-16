@@ -17,7 +17,7 @@ export default function DashboardView() {
   const [selectedIncident, setSelectedIncident] = useState(null);
 
   const fetchDashboardData = () => {
-    fetch('http://localhost:5000/api/dashboard/stats')
+    fetch('https://ssoma-app-fbwe.onrender.com/api/dashboard/stats')
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -26,12 +26,12 @@ export default function DashboardView() {
       })
       .catch((err) => console.error('Error fetching dashboard stats:', err));
 
-    fetch('http://localhost:5000/api/personal/areas')
+    fetch('https://ssoma-app-fbwe.onrender.com/api/personal/areas')
       .then((res) => res.json())
       .then((data) => data.success && setAreas(data.data))
       .catch(() => {});
 
-    fetch('http://localhost:5000/api/personal/trabajadores')
+    fetch('https://ssoma-app-fbwe.onrender.com/api/personal/trabajadores')
       .then((res) => res.json())
       .then((data) => data.success && setWorkers(data.data))
       .catch(() => {});
@@ -42,7 +42,7 @@ export default function DashboardView() {
   }, []);
 
   const handleSaveIncident = async (newIncidentData) => {
-    const res = await fetch('http://localhost:5000/api/incidentes', {
+    const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/incidentes', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newIncidentData)

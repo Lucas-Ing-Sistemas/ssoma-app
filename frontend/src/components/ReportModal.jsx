@@ -9,7 +9,7 @@ export default function ReportModal({ isOpen, onClose }) {
 
   useEffect(() => {
     if (isOpen) {
-      fetch('http://localhost:5000/api/reportes/mensual')
+      fetch('https://ssoma-app-fbwe.onrender.com/api/reportes/mensual')
         .then((res) => res.json())
         .then((data) => {
           if (data.success) {

@@ -34,7 +34,7 @@ export default function AmbientalView() {
 
   const loadData = () => {
     setLoading(true);
-    fetch('http://localhost:5000/api/ambiental/residuos')
+    fetch('https://ssoma-app-fbwe.onrender.com/api/ambiental/residuos')
       .then((res) => res.json())
       .then((d) => {
         if (d.success) {
@@ -43,7 +43,7 @@ export default function AmbientalView() {
         }
       });
 
-    fetch('http://localhost:5000/api/ambiental/monitoreo')
+    fetch('https://ssoma-app-fbwe.onrender.com/api/ambiental/monitoreo')
       .then((res) => res.json())
       .then((d) => {
         if (d.success) setMonitoreo(d.data);
@@ -51,7 +51,7 @@ export default function AmbientalView() {
       })
       .catch(() => setLoading(false));
 
-    fetch('http://localhost:5000/api/personal/areas').then((res) => res.json()).then((d) => d.success && setAreas(d.data));
+    fetch('https://ssoma-app-fbwe.onrender.com/api/personal/areas').then((res) => res.json()).then((d) => d.success && setAreas(d.data));
   };
 
   useEffect(() => {
@@ -60,7 +60,7 @@ export default function AmbientalView() {
 
   const handleSaveResiduo = async (e) => {
     e.preventDefault();
-    await fetch('http://localhost:5000/api/ambiental/residuos', {
+    await fetch('https://ssoma-app-fbwe.onrender.com/api/ambiental/residuos', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formResiduo)
@@ -71,7 +71,7 @@ export default function AmbientalView() {
 
   const handleSaveMonitoreo = async (e) => {
     e.preventDefault();
-    await fetch('http://localhost:5000/api/ambiental/monitoreo', {
+    await fetch('https://ssoma-app-fbwe.onrender.com/api/ambiental/monitoreo', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formMonitoreo)

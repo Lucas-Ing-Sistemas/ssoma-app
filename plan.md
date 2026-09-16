@@ -120,7 +120,7 @@ Dashboard interactivo principal:
 
 ### Automated & Sanity Checks
 1. Ejecución del script `init_db.js` para verificar la creación de la base de datos `dev_ssoma` y la carga de datos sin errores de sintaxis MySQL.
-2. Comprobación del backend Express en `http://localhost:5000/api/health` y `/api/dashboard/stats`.
+2. Comprobación del backend Express en `https://ssoma-app-fbwe.onrender.com/api/health` y `/api/dashboard/stats`.
 3. Verificación de compilación del frontend en Vite (`npm run build` o servidor de desarrollo activo).
 
 ### Manual Verification

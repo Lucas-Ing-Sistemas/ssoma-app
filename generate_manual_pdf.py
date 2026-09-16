@@ -546,7 +546,7 @@ def build_manual_pdf():
          "Abra una segunda terminal en <code>frontend/</code> y ejecute: <code>npm install</code>"),
         
         ("Paso 7: Levantar los Servidores y Acceder",
-         "• Terminal 1 (Backend): <code>node server.js</code> <i>(Servidor en http://localhost:5000)</i><br/>"
+         "• Terminal 1 (Backend): <code>node server.js</code> <i>(Servidor en https://ssoma-app-fbwe.onrender.com)</i><br/>"
          "• Terminal 2 (Frontend): <code>npm run dev</code> <i>(Aplicación en http://localhost:5173)</i>"),
         
         ("Paso 8: Credenciales de Acceso Demostrativas",

@@ -26,7 +26,7 @@ export default function IpercView() {
 
   const loadData = () => {
     setLoading(true);
-    fetch('http://localhost:5000/api/iperc')
+    fetch('https://ssoma-app-fbwe.onrender.com/api/iperc')
       .then((res) => res.json())
       .then((data) => {
         if (data.success) setMatrixData(data.data);
@@ -34,8 +34,8 @@ export default function IpercView() {
       })
       .catch(() => setLoading(false));
 
-    fetch('http://localhost:5000/api/personal/areas').then((res) => res.json()).then((d) => d.success && setAreas(d.data));
-    fetch('http://localhost:5000/api/personal/trabajadores').then((res) => res.json()).then((d) => d.success && setWorkers(d.data));
+    fetch('https://ssoma-app-fbwe.onrender.com/api/personal/areas').then((res) => res.json()).then((d) => d.success && setAreas(d.data));
+    fetch('https://ssoma-app-fbwe.onrender.com/api/personal/trabajadores').then((res) => res.json()).then((d) => d.success && setWorkers(d.data));
   };
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export default function IpercView() {
 
   const handleCreate = async (e) => {
     e.preventDefault();
-    await fetch('http://localhost:5000/api/iperc', {
+    await fetch('https://ssoma-app-fbwe.onrender.com/api/iperc', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)

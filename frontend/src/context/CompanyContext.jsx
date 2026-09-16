@@ -27,7 +27,7 @@ export function CompanyProvider({ children }) {
 
   const loadCompany = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/configuracion/empresa');
+      const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/configuracion/empresa');
       const data = await res.json();
       if (data.success && data.data) {
         setCompany(data.data);
@@ -45,7 +45,7 @@ export function CompanyProvider({ children }) {
 
   const updateCompany = async (updatedFields) => {
     try {
-      const res = await fetch('http://localhost:5000/api/configuracion/empresa', {
+      const res = await fetch('https://ssoma-app-fbwe.onrender.com/api/configuracion/empresa', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedFields)
