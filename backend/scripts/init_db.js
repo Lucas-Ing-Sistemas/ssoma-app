@@ -1,32 +1,34 @@
 const mysql = require('mysql2/promise');
 const bcrypt = require('bcryptjs');
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
-const dbHost = process.env.DB_HOST || 'localhost';
-const dbUser = process.env.DB_USER || 'root';
-const dbPassword = process.env.DB_PASSWORD || '';
-const dbPort = parseInt(process.env.DB_PORT || '3306', 10);
-const dbName = process.env.DB_NAME || 'dev_ssoma';
+const dbHost = 'gateway01.us-east-1.prod.aws.tidbcloud.com';
+const dbUser = '2iCDkUrA4Pbn8PX.root';
+const dbPassword = 'cTUcMsnmEk4CrECm';
+const dbPort = 4000;
+const dbName = 'dev_ssoma';
+
+const sslConfig = dbHost.includes('localhost') || dbHost.includes('127.0.0.1')
+  ? false
+  : { minVersion: 'TLSv1.2', rejectUnauthorized: true };
 
 async function initializeDatabase() {
   console.log(`[SSOMA DB] Conectando a MySQL en ${dbHost}:${dbPort}...`);
   let connection;
   try {
-    // 1. Conexión sin base de datos seleccionada
     connection = await mysql.createConnection({
       host: dbHost,
       user: dbUser,
       password: dbPassword,
-      port: dbPort
+      port: dbPort,
+      database: dbName,
+      ssl: sslConfig
     });
 
-    console.log(`[SSOMA DB] Verificando / creando base de datos "${dbName}"...`);
-    await connection.query(`CREATE DATABASE IF NOT EXISTS \`${dbName}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`);
-    await connection.changeUser({ database: dbName });
-
+    console.log(`[SSOMA DB] Conexión establecida con "${dbName}".`);
     console.log(`[SSOMA DB] Creando tablas del sistema SSOMA...`);
 
-    // Tablas del sistema
     await connection.query(`
       CREATE TABLE IF NOT EXISTS usuarios (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -257,10 +259,8 @@ async function initializeDatabase() {
 
     console.log(`[SSOMA DB] Poblando datos iniciales y usuarios...`);
 
-    // Insertar Usuarios con password hasheado 'admin123'
     const passwordHash = await bcrypt.hash('admin123', 10);
     
-    // Limpiar si existen o verificar
     const [userRows] = await connection.query(`SELECT COUNT(*) as count FROM usuarios`);
     if (userRows[0].count === 0) {
       await connection.query(`
@@ -272,7 +272,6 @@ async function initializeDatabase() {
       `, [passwordHash, passwordHash, passwordHash, passwordHash]);
     }
 
-    // Areas
     const [areaRows] = await connection.query(`SELECT COUNT(*) as count FROM areas`);
     if (areaRows[0].count === 0) {
       await connection.query(`
@@ -286,7 +285,6 @@ async function initializeDatabase() {
       `);
     }
 
-    // Trabajadores
     const [trabRows] = await connection.query(`SELECT COUNT(*) as count FROM trabajadores`);
     if (trabRows[0].count === 0) {
       await connection.query(`
@@ -302,7 +300,6 @@ async function initializeDatabase() {
       `);
     }
 
-    // Incidentes con datos reales SSOMA
     const [incRows] = await connection.query(`SELECT COUNT(*) as count FROM incidentes`);
     if (incRows[0].count === 0) {
       await connection.query(`
@@ -316,7 +313,6 @@ async function initializeDatabase() {
       `);
     }
 
-    // Inspecciones
     const [inspRows] = await connection.query(`SELECT COUNT(*) as count FROM inspecciones`);
     if (inspRows[0].count === 0) {
       await connection.query(`
@@ -329,7 +325,6 @@ async function initializeDatabase() {
       `);
     }
 
-    // Hallazgos
     const [hallRows] = await connection.query(`SELECT COUNT(*) as count FROM hallazgos`);
     if (hallRows[0].count === 0) {
       await connection.query(`
@@ -340,7 +335,6 @@ async function initializeDatabase() {
       `);
     }
 
-    // IPERC
     const [ipercRows] = await connection.query(`SELECT COUNT(*) as count FROM iperc`);
     if (ipercRows[0].count === 0) {
       await connection.query(`
@@ -353,7 +347,6 @@ async function initializeDatabase() {
       `);
     }
 
-    // Residuos Ambientales
     const [resRows] = await connection.query(`SELECT COUNT(*) as count FROM residuos_ambientales`);
     if (resRows[0].count === 0) {
       await connection.query(`
@@ -367,7 +360,6 @@ async function initializeDatabase() {
       `);
     }
 
-    // Monitoreo Ambiental
     const [monRows] = await connection.query(`SELECT COUNT(*) as count FROM monitoreo_ambiental`);
     if (monRows[0].count === 0) {
       await connection.query(`
@@ -381,7 +373,6 @@ async function initializeDatabase() {
       `);
     }
 
-    // Capacitaciones
     const [capRows] = await connection.query(`SELECT COUNT(*) as count FROM capacitaciones`);
     if (capRows[0].count === 0) {
       await connection.query(`
@@ -394,7 +385,6 @@ async function initializeDatabase() {
       `);
     }
 
-    // Tipos de EPP
     const [eppRows] = await connection.query(`SELECT COUNT(*) as count FROM tipos_epp`);
     if (eppRows[0].count === 0) {
       await connection.query(`
@@ -409,7 +399,6 @@ async function initializeDatabase() {
       `);
     }
 
-    // Entregas de EPP
     const [entRows] = await connection.query(`SELECT COUNT(*) as count FROM entregas_epp`);
     if (entRows[0].count === 0) {
       await connection.query(`
@@ -423,7 +412,6 @@ async function initializeDatabase() {
       `);
     }
 
-    // Configuración Empresa
     const [cfgRows] = await connection.query(`SELECT COUNT(*) as count FROM configuracion_empresa`);
     if (cfgRows[0].count === 0) {
       await connection.query(`

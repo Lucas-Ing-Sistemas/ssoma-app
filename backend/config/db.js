@@ -5,8 +5,11 @@ let pool;
 
 function getPool() {
   if (!pool) {
+    const host = process.env.DB_HOST || 'localhost';
+    const isLocal = host.includes('localhost') || host.includes('127.0.0.1');
+
     pool = mysql.createPool({
-      host: process.env.DB_HOST,
+      host: host,
       port: Number(process.env.DB_PORT) || 4000,
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
@@ -14,16 +17,18 @@ function getPool() {
       waitForConnections: true,
       connectionLimit: 10,
       queueLimit: 0,
-      ssl: {
-        rejectUnauthorized: true
-      }
+      ssl: isLocal
+        ? false
+        : {
+            minVersion: 'TLSv1.2',
+            rejectUnauthorized: true
+          }
     });
   }
   return pool;
 }
 
 module.exports = { getPool };
-
 
 
 
