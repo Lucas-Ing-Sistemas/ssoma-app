@@ -1,0 +1,20 @@
+# Dependencias y builds
+node_modules/
+dist/
+build/
+
+# Variables de entorno y credenciales
+.env
+.env.*
+*.env
+credencialesdelsistema.txt
+
+# Respaldos y volcados de base de datos
+*.sql
+*.json
+!package.json
+!package-lock.json
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db

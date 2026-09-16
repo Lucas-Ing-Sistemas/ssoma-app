@@ -1,0 +1,1647 @@
+:root {
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Outfit', sans-serif;
+
+  /* Colores Corporativos CUMPLESST */
+  --brand-primary: #0d5f3d;
+  --brand-primary-light: #157a50;
+  --brand-primary-dark: #073824;
+  --brand-primary-soft: #eaf4ef;
+
+  --brand-gold: #c9a227;
+  --brand-gold-light: #dfb943;
+  --brand-gold-dark: #a88419;
+  --brand-gold-soft: #fbf6e8;
+
+  --brand-sand: #d9c7a3;
+  --brand-sand-light: #f6f1e8;
+  --brand-sand-border: #c8b58f;
+  --brand-sand-dark: #8c764e;
+
+  /* Superficies y Neutros */
+  --bg-app: #f4f6f4;
+  --bg-card: #ffffff;
+  --bg-sidebar: #061e13;
+  --bg-sidebar-hover: rgba(217, 199, 163, 0.12);
+  --bg-sidebar-active: #0d5f3d;
+
+  --text-main: #132219;
+  --text-muted: #53695c;
+  --text-light: #899e92;
+  --text-white: #ffffff;
+
+  /* Reemplazo de Acentos Globales */
+  --primary-green: #0d5f3d;
+  --primary-indigo: #c9a227;
+  --primary-amber: #b08815;
+  --primary-rose: #be3232;
+  --primary-blue: #1b7a54;
+
+  /* Gradientes de Tarjetas KPI con la Nueva Paleta */
+  --grad-emerald: linear-gradient(135deg, #0d5f3d 0%, #177c51 100%);
+  --grad-indigo: linear-gradient(135deg, #24352b 0%, #15241b 100%);
+  --grad-amber: linear-gradient(135deg, #c9a227 0%, #a88419 100%);
+  --grad-rose: linear-gradient(135deg, #2a1f24 0%, #191417 100%);
+  --grad-sidebar: linear-gradient(180deg, #05140d 0%, #0a291b 100%);
+
+  /* Bordes, Sombras y Radios */
+  --border-light: #e5ece7;
+  --border-subtle: rgba(13, 95, 61, 0.08);
+  --shadow-sm: 0 2px 6px rgba(13, 95, 61, 0.04);
+  --shadow-md: 0 8px 20px rgba(13, 95, 61, 0.08);
+  --shadow-lg: 0 16px 32px rgba(13, 95, 61, 0.12);
+  --shadow-kpi: 0 10px 24px rgba(6, 30, 19, 0.18);
+  --shadow-gold: 0 8px 20px rgba(201, 162, 39, 0.25);
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-full: 9999px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--brand-sand-border);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-gold);
+}
+
+/* Layout Principal */
+.ssoma-app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: var(--bg-app);
+  overflow-x: hidden;
+}
+
+/* Sidebar Elegante con Verde Oscuro y Acentos Oro */
+.ssoma-sidebar {
+  width: 240px;
+  min-width: 240px;
+  background: var(--grad-sidebar);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 16px;
+  transition: all 0.3s ease;
+  z-index: 50;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.25);
+  border-right: 1px solid rgba(217, 199, 163, 0.12);
+}
+
+.ssoma-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 8px 24px 8px;
+  border-bottom: 1px solid rgba(217, 199, 163, 0.15);
+}
+
+.ssoma-brand-logo {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--brand-gold) 0%, var(--brand-gold-dark) 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(201, 162, 39, 0.35);
+  color: #ffffff;
+}
+
+.ssoma-brand-title {
+  font-family: var(--font-display);
+  font-size: 1.22rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.ssoma-brand-title span {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--brand-sand);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.ssoma-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 20px;
+  flex: 1;
+}
+
+.ssoma-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  color: #b3c5bb;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.ssoma-nav-item:hover {
+  color: #ffffff;
+  background: var(--bg-sidebar-hover);
+  transform: translateX(4px);
+}
+
+.ssoma-nav-item.active {
+  color: #ffffff;
+  background: var(--brand-primary);
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(13, 95, 61, 0.4);
+  border-left: 3px solid var(--brand-gold);
+}
+
+.ssoma-sidebar-footer {
+  padding-top: 16px;
+  border-top: 1px solid rgba(217, 199, 163, 0.12);
+}
+
+.ssoma-logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  background: rgba(217, 199, 163, 0.08);
+  color: var(--brand-sand);
+  border: 1px solid rgba(217, 199, 163, 0.2);
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ssoma-logout-btn:hover {
+  background: rgba(217, 199, 163, 0.18);
+  color: #ffffff;
+}
+
+/* Área de Contenido Principal */
+.ssoma-content-wrapper {
+  flex: 1;
+  display: flex;
+  padding: 24px 28px;
+  gap: 24px;
+  max-width: calc(100vw - 240px);
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.ssoma-main-panel {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Encabezado */
+.ssoma-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.ssoma-page-title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.5px;
+}
+
+.ssoma-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  width: 340px;
+  max-width: 100%;
+  transition: all 0.2s;
+}
+
+.ssoma-search-bar:focus-within {
+  border-color: var(--brand-gold);
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.18);
+}
+
+.ssoma-search-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-size: 0.88rem;
+  color: var(--text-main);
+  font-family: var(--font-main);
+}
+
+.ssoma-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ssoma-icon-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-full);
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-sm);
+}
+
+.ssoma-icon-btn:hover {
+  background: var(--brand-sand-light);
+  color: var(--brand-primary);
+  border-color: var(--brand-sand);
+}
+
+.ssoma-badge-dot {
+  position: absolute;
+  top: 10px;
+  right: 11px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--brand-gold);
+  border-radius: var(--radius-full);
+  border: 2px solid #ffffff;
+}
+
+.ssoma-user-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 14px 5px 6px;
+  background: #ffffff;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ssoma-user-badge:hover {
+  border-color: var(--brand-sand-border);
+}
+
+.ssoma-user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  border: 2px solid var(--brand-primary);
+}
+
+.ssoma-user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.ssoma-user-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.ssoma-user-role {
+  font-size: 0.7rem;
+  color: var(--brand-gold-dark);
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* Tarjetas KPI Superiores */
+.ssoma-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.ssoma-kpi-card {
+  padding: 22px 20px;
+  border-radius: var(--radius-lg);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 140px;
+  box-shadow: var(--shadow-kpi);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ssoma-kpi-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(6, 30, 19, 0.22);
+}
+
+/* Mapeo de Colores para las 3 Tarjetas */
+.ssoma-kpi-card.emerald {
+  background: var(--grad-emerald);
+}
+.ssoma-kpi-card.indigo {
+  background: var(--grad-indigo);
+  border: 1px solid rgba(217, 199, 163, 0.35);
+}
+.ssoma-kpi-card.amber {
+  background: var(--grad-amber);
+  box-shadow: var(--shadow-gold);
+}
+.ssoma-kpi-card.rose {
+  background: var(--grad-rose);
+  border-top: 3px solid var(--brand-gold);
+}
+
+.ssoma-kpi-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.ssoma-kpi-icon-box {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.ssoma-kpi-meta {
+  text-align: right;
+}
+
+.ssoma-kpi-label {
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  opacity: 0.95;
+}
+
+.ssoma-kpi-value {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-top: 4px;
+}
+
+.ssoma-kpi-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+.ssoma-kpi-badge {
+  background: rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(4px);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Tarjeta del Gráfico Central */
+.ssoma-chart-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ssoma-chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ssoma-chart-subheading {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--brand-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.ssoma-chart-main-value {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.ssoma-period-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--brand-sand-light);
+  border: 1px solid var(--brand-sand-border);
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--brand-primary-dark);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ssoma-period-selector:hover {
+  background: #ede3d1;
+}
+
+/* Curva Spline */
+.ssoma-spline-container {
+  width: 100%;
+  height: 220px;
+  position: relative;
+}
+
+.ssoma-spline-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Tooltip dentro del Gráfico */
+.ssoma-chart-tooltip {
+  position: absolute;
+  background: var(--brand-primary);
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  box-shadow: 0 10px 20px rgba(13, 95, 61, 0.35);
+  pointer-events: none;
+  transform: translate(-50%, -120%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+  border: 1.5px solid var(--brand-gold);
+}
+
+.ssoma-chart-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0;
+  border-style: solid;
+  border-color: var(--brand-primary) transparent transparent;
+}
+
+/* Tabla de Eventos Recientes */
+.ssoma-table-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+}
+
+.ssoma-table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.ssoma-table-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.ssoma-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+.ssoma-table th {
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 6px 14px;
+  text-align: left;
+}
+
+.ssoma-table tbody tr {
+  background: #ffffff;
+  transition: all 0.2s ease;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.ssoma-table tbody tr:hover {
+  background: var(--brand-sand-light);
+  transform: scale(1.005);
+}
+
+.ssoma-table td {
+  padding: 14px;
+  font-size: 0.88rem;
+  vertical-align: middle;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.ssoma-table td:first-child {
+  border-left: 1px solid var(--border-light);
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  font-weight: 800;
+  color: var(--brand-primary);
+}
+
+.ssoma-table td:last-child {
+  border-right: 1px solid var(--border-light);
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.ssoma-worker-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ssoma-worker-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  border: 1.5px solid var(--brand-sand);
+}
+
+.ssoma-worker-name {
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.ssoma-worker-sub {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.ssoma-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.ssoma-badge-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.ssoma-badge-status.active {
+  background: var(--brand-sand-light);
+  color: var(--brand-primary-dark);
+  border: 1px solid var(--brand-sand-border);
+}
+
+.ssoma-badge-status.complete {
+  background: var(--brand-primary-soft);
+  color: var(--brand-primary);
+  border: 1px solid rgba(13, 95, 61, 0.2);
+}
+
+.ssoma-badge-status.onhold {
+  background: var(--brand-gold-soft);
+  color: var(--brand-gold-dark);
+  border: 1px solid rgba(201, 162, 39, 0.3);
+}
+
+/* Columna Lateral Derecha */
+.ssoma-right-panel {
+  width: 320px;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ssoma-right-kpi {
+  background: linear-gradient(135deg, #182820 0%, #0d1a14 100%);
+  border-top: 4px solid var(--brand-gold);
+  padding: 22px 20px;
+  border-radius: var(--radius-lg);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-kpi);
+  position: relative;
+}
+
+.ssoma-right-kpi-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Donut Chart Card */
+.ssoma-donut-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.ssoma-donut-title {
+  align-self: flex-start;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.ssoma-donut-wrapper {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ssoma-donut-center-text {
+  position: absolute;
+  text-align: center;
+}
+
+.ssoma-donut-legend {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.ssoma-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.ssoma-legend-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: var(--radius-full);
+}
+
+/* Tarjeta PDF Report */
+.ssoma-report-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.ssoma-report-illustration {
+  width: 100%;
+  height: 130px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--brand-sand-light) 0%, var(--brand-primary-soft) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 1px dashed var(--brand-sand-border);
+}
+
+.ssoma-report-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.ssoma-report-subtitle {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  max-width: 200px;
+}
+
+.ssoma-report-download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 20px;
+  background: var(--brand-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(13, 95, 61, 0.25);
+}
+
+.ssoma-report-download-btn:hover {
+  background: var(--brand-primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(13, 95, 61, 0.35);
+}
+
+/* Modales */
+.ssoma-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 24, 15, 0.65);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.ssoma-modal {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(6, 24, 15, 0.35);
+  border: 1px solid var(--brand-sand-light);
+  animation: modalIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.ssoma-modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ssoma-modal-body {
+  padding: 24px;
+}
+
+.ssoma-modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* Formularios */
+.ssoma-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.ssoma-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ssoma-form-group.full {
+  grid-column: span 2;
+}
+
+.ssoma-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--brand-primary-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ssoma-input, .ssoma-select, .ssoma-textarea {
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+  font-size: 0.88rem;
+  font-family: var(--font-main);
+  outline: none;
+  background: #fcfdfc;
+  transition: all 0.2s;
+}
+
+.ssoma-input:focus, .ssoma-select:focus, .ssoma-textarea:focus {
+  border-color: var(--brand-gold);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.2);
+}
+
+/* Botones */
+.ssoma-btn {
+  padding: 11px 22px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.86rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ssoma-btn-primary {
+  background: var(--brand-primary);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(13, 95, 61, 0.25);
+}
+.ssoma-btn-primary:hover {
+  background: var(--brand-primary-light);
+  transform: translateY(-1px);
+}
+
+.ssoma-btn-secondary {
+  background: var(--brand-sand-light);
+  color: var(--brand-primary-dark);
+  border: 1px solid var(--brand-sand-border);
+}
+.ssoma-btn-secondary:hover {
+  background: #ede3d1;
+}
+
+/* ==========================================================
+   OPTIMIZACIÓN RESPONSIVA PROFESIONAL (Mobile & Tablet)
+   ========================================================== */
+
+/* TABLETS Y PANTALLAS COMPACTAS (<= 1024px) */
+@media (max-width: 1024px) {
+  .ssoma-app-container {
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow-x: hidden !important;
+  }
+
+  .ssoma-sidebar {
+    width: 100% !important;
+    min-width: 100% !important;
+    padding: 12px 18px !important;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(217, 199, 163, 0.18) !important;
+  }
+
+  .ssoma-brand {
+    padding-bottom: 8px !important;
+    border-bottom: none !important;
+  }
+
+  .ssoma-nav {
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    gap: 6px !important;
+    margin-top: 8px !important;
+    padding-bottom: 4px !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ssoma-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ssoma-nav-item {
+    white-space: nowrap !important;
+    padding: 8px 12px !important;
+    font-size: 0.8rem !important;
+    border-left: none !important;
+    border-bottom: 3px solid transparent !important;
+  }
+
+  .ssoma-nav-item.active {
+    border-bottom-color: var(--brand-gold) !important;
+    background: rgba(13, 95, 61, 0.6) !important;
+  }
+
+  .ssoma-sidebar-footer {
+    display: none !important;
+  }
+
+  .ssoma-content-wrapper {
+    flex-direction: column !important;
+    max-width: 100vw !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow-y: visible !important;
+    padding: 20px 16px !important;
+    gap: 20px !important;
+  }
+
+  .ssoma-main-panel {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .ssoma-right-panel {
+    width: 100% !important;
+    min-width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+    gap: 16px !important;
+  }
+
+  .ssoma-kpi-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 14px !important;
+  }
+}
+
+/* SMARTPHONES Y PANTALLAS PEQUEÑAS (<= 640px) */
+@media (max-width: 640px) {
+  body {
+    overflow-x: hidden !important;
+  }
+
+  .ssoma-content-wrapper {
+    padding: 12px 10px 80px 10px !important; /* Espacio inferior para fácil lectura */
+    gap: 14px !important;
+  }
+
+  /* Header móvil compacto */
+  .ssoma-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+
+  .ssoma-page-title {
+    font-size: 1.35rem !important;
+    text-align: left !important;
+  }
+
+  .ssoma-search-bar {
+    width: 100% !important;
+    padding: 8px 14px !important;
+  }
+
+  .ssoma-header-actions {
+    display: flex !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+  }
+
+  .ssoma-user-badge {
+    padding: 4px 10px 4px 4px !important;
+  }
+
+  .ssoma-user-role {
+    display: none !important; /* Ahorra espacio en pantalla chica */
+  }
+
+  /* KPIs 1 Columna */
+  .ssoma-kpi-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .ssoma-kpi-card {
+    min-height: auto !important;
+    padding: 16px !important;
+  }
+
+  .ssoma-kpi-value {
+    font-size: 1.5rem !important;
+  }
+
+  .ssoma-right-panel {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  /* Gráficos adaptables */
+  .ssoma-chart-card {
+    padding: 14px !important;
+  }
+
+  .ssoma-spline-container {
+    height: 180px !important;
+  }
+
+  /* Tablas con scroll horizontal nativo y suave */
+  .ssoma-table-card {
+    padding: 14px 10px !important;
+    border-radius: 14px !important;
+  }
+
+  .ssoma-table-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+
+  .ssoma-table-header button,
+  .ssoma-table-card button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .ssoma-table th, 
+  .ssoma-table td {
+    padding: 8px 6px !important;
+    font-size: 0.74rem !important;
+    white-space: nowrap !important;
+  }
+
+  /* Modales a pantalla completa limpia en móvil */
+  .ssoma-modal-overlay {
+    padding: 10px !important;
+    align-items: flex-end !important; /* Sube como bottom sheet */
+  }
+
+  .ssoma-modal {
+    max-width: 100% !important;
+    width: 100% !important;
+    max-height: 88vh !important;
+    border-radius: 20px 20px 0 0 !important;
+    padding: 0 !important;
+  }
+
+  .ssoma-modal-header {
+    padding: 14px 16px !important;
+  }
+
+  .ssoma-modal-body {
+    padding: 16px !important;
+  }
+
+  .ssoma-modal-footer {
+    padding: 12px 16px !important;
+    flex-direction: column-reverse !important;
+    gap: 8px !important;
+  }
+
+  .ssoma-modal-footer button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* Forzar grids de inputs inline a columna única */
+  div[style*="gridTemplateColumns: '1fr 1fr'"],
+  div[style*="gridTemplateColumns: 'repeat(2, 1fr)'"],
+  div[style*="gridTemplateColumns: 'repeat(3, 1fr)'"],
+  .ssoma-form-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ==========================================================
+   ESTILOS DEDICADOS PARA LOGIN (Desktop + Mobile First)
+   ========================================================== */
+.login-responsive-container {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #fbfcfd;
+}
+
+.login-brand-panel {
+  flex: 1 1 52%;
+  background-color: #0d5f3d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.login-decor-diamond {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+.diamond-top { top: -180px; left: -180px; }
+.diamond-bottom { bottom: -160px; right: -140px; }
+
+.login-brand-content {
+  text-align: center;
+  z-index: 1;
+  color: #ffffff;
+}
+
+.login-brand-icon {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.login-brand-title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.login-brand-subtitle {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-top: 10px;
+}
+
+.login-form-panel {
+  flex: 1 1 48%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.login-form-wrapper {
+  width: 100%;
+  max-width: 380px;
+}
+
+.login-form-header-badge {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.login-form-icon-circle {
+  width: 64px;
+  height: 64px;
+  border: 2.5px solid #0d5f3d;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #0d5f3d;
+}
+
+.login-field-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff;
+  margin-bottom: 14px;
+  transition: border-color 0.2s;
+}
+
+.login-field-group:focus-within {
+  border-color: #0d5f3d;
+  box-shadow: 0 0 0 3px rgba(13, 95, 61, 0.12);
+}
+
+.login-field-icon {
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-field-icon.user-icon {
+  background: #eaf4ef;
+  border-right: 1px solid #c8e6d9;
+}
+.login-field-icon.lock-icon {
+  background: #f1f5f9;
+  border-right: 1px solid #e2e8f0;
+}
+
+.login-input-text {
+  border: none;
+  outline: none;
+  padding: 12px 14px;
+  font-size: 0.92rem;
+  color: #1e293b;
+  width: 100%;
+  background: transparent;
+}
+
+.login-eye-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 14px;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+}
+
+.login-remember-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0 16px 0;
+}
+
+.login-checkbox {
+  accent-color: #0d5f3d;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.login-checkbox-label {
+  font-size: 0.85rem;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.login-submit-btn {
+  width: 100%;
+  background-color: #0d5f3d;
+  color: #ffffff;
+  border: none;
+  border-radius: 24px;
+  padding: 13px 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(13, 95, 61, 0.25);
+  transition: all 0.2s;
+}
+
+.login-submit-btn:hover {
+  background-color: #14744d;
+}
+
+.login-demo-section {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.login-demo-label {
+  font-size: 0.72rem;
+  color: #64748b;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 12px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.login-demo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.login-demo-btn {
+  padding: 9px 4px;
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 20px;
+  color: #475569;
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s;
+}
+
+.login-demo-btn.active {
+  background: #eaf4ef;
+  border-color: #0d5f3d;
+  color: #0d5f3d;
+}
+
+.login-compliance-footer {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.7rem;
+  color: #94a3b8;
+}
+
+.login-error-alert {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  borderRadius: 8px;
+  color: #dc2626;
+  font-size: 0.82rem;
+  margin-bottom: 18px;
+}
+
+
+/* ==========================================================
+   REGLAS RESPONSIVAS MÓVILES Y TABLETS (<= 768px)
+   ========================================================== */
+@media (max-width: 768px) {
+  /* 1. Login en Móvil: Se apila limpio verticalmente */
+  .login-responsive-container {
+    flex-direction: column !important;
+    min-height: 100vh !important;
+    width: 100% !important;
+  }
+
+  .login-brand-panel {
+    flex: none !important;
+    width: 100% !important;
+    padding: 30px 20px !important;
+    min-height: auto !important;
+  }
+
+  .login-brand-icon {
+    width: 60px !important;
+    height: 60px !important;
+    margin-bottom: 12px !important;
+  }
+  .login-brand-icon svg {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .login-brand-title {
+    font-size: 1.8rem !important;
+  }
+
+  .login-brand-subtitle {
+    font-size: 0.85rem !important;
+    margin-top: 4px !important;
+  }
+
+  .login-form-panel {
+    flex: 1 !important;
+    width: 100% !important;
+    padding: 30px 20px 40px 20px !important;
+  }
+
+  .login-form-header-badge {
+    display: none !important; /* En móvil ya está el logo verde arriba */
+  }
+
+  /* 2. Contenedor General de la Plataforma */
+  .ssoma-app-container {
+    flex-direction: column !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100vh !important;
+  }
+
+  /* 3. Barra Superior / Navegación Móvil */
+  .ssoma-sidebar {
+    width: 100% !important;
+    min-width: 100% !important;
+    padding: 12px 14px !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .ssoma-brand {
+    padding-bottom: 8px !important;
+    border-bottom: none !important;
+  }
+
+  .ssoma-brand-logo {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .ssoma-brand-title {
+    font-size: 1.05rem !important;
+  }
+
+  .ssoma-nav {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    gap: 6px !important;
+    padding: 6px 0 !important;
+    margin-top: 6px !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ssoma-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ssoma-nav-item {
+    padding: 7px 12px !important;
+    font-size: 0.78rem !important;
+    border-radius: 20px !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+  }
+
+  .ssoma-nav-item.active {
+    background: #0d5f3d !important;
+    color: #ffffff !important;
+    border-left: none !important;
+  }
+
+  .ssoma-sidebar-footer {
+    display: none !important;
+  }
+
+  /* 4. Contenido Principal */
+  .ssoma-content-wrapper {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 14px 12px !important;
+    gap: 16px !important;
+    height: auto !important;
+    overflow-y: visible !important;
+  }
+
+  .ssoma-main-panel {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* Header del Módulo */
+  .ssoma-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+
+  .ssoma-search-bar {
+    width: 100% !important;
+  }
+
+  .ssoma-header-actions {
+    display: flex !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+  }
+
+  /* 5. TARJETAS KPI: COLAPSAR A 1 COLUMNA COMPLETA */
+  .ssoma-kpi-grid,
+  div[style*="display: 'grid'"][style*="gridTemplateColumns: 'repeat(3, 1fr)'"],
+  div[style*="gridTemplateColumns: repeat(3, 1fr)"],
+  div[style*="gridTemplateColumns: repeat(4, 1fr)"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  .ssoma-kpi-card {
+    min-height: 100px !important;
+    padding: 16px 18px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .ssoma-kpi-value {
+    font-size: 1.8rem !important;
+  }
+
+  /* 6. Tarjetas de Gestión Ambiental / Residuos a 2 columnas o 1 columna */
+  div[style*="gridTemplateColumns: 'repeat(4, 1fr)'"],
+  div[style*="repeat(auto-fill, minmax(240px, 1fr))"] {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* 7. Gráfico Central */
+  .ssoma-chart-card {
+    padding: 16px !important;
+  }
+
+  .ssoma-spline-container {
+    height: 180px !important;
+  }
+
+  /* 8. Panel Derecho Flotante */
+  .ssoma-right-panel {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+
+  /* 9. Tablas y Botones */
+  .ssoma-table-card {
+    padding: 16px 12px !important;
+  }
+
+  .ssoma-table-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+
+  .ssoma-table-header button,
+  .ssoma-table-card button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
